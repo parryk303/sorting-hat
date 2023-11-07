@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'AlmendraSC';
+  src: url('../public/fonts/AlmendraSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MedievalSharp';
+  src: url('../public/fonts/MedievalSharp-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+#Gryffindor {
+  background-color: #ae0001; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+
+#Gryffindor:hover {
+  background-color: #eeba30;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
+#Hufflepuff {
+  background-color: #f0c75e; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+
+#Hufflepuff:hover {
+  background-color: #726255;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
+#Ravenclaw {
+  background-color: #222f5b; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+
+#Ravenclaw:hover {
+  background-color: #bebebe;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
+#Slytherin {
+  background-color: #2a623d; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+
+#Slytherin:hover {
+  background-color: #aaaaaa;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
+@keyframes magical-hover {
+  from {
+    transform: scale(1);
+    /* Initial scale (no change) */
+  }
+
+  to {
+    transform: scale(1.1);
+    /* Scale up by 10% on hover */
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0); /* No translation at the beginning and end */
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px); /* Shake left */
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px); /* Shake right */
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}
+
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(from 180deg at 50% 50%,
+      #16abff33 0deg,
+      #0885ff33 55deg,
+      #54d6ff33 120deg,
+      #0071ff33 160deg,
+      transparent 360deg);
+  --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(#00000080,
+      #00000040,
+      #00000030,
+      #00000020,
+      #00000010,
+      #00000010,
+      #00000080);
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(to bottom right,
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0.3));
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(#ffffff80,
+        #ffffff40,
+        #ffffff30,
+        #ffffff20,
+        #ffffff10,
+        #ffffff10,
+        #ffffff80);
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
