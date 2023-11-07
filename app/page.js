@@ -7,9 +7,9 @@ import Image from 'next/image';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [components, setComponents] = useState('');
   const [imports, setImports] = useState('');
   const [icons, setIcons] = useState('');
-  const [components, setComponents] = useState('');
   const [hooks, setHooks] = useState('');
   const [house, setHouse] = useState('');
   const [sorted, setSorted] = useState();
@@ -28,6 +28,10 @@ export default function Home() {
     if (get && house) {
       setSorted(sortHouse(house));
       setIsModalOpen(true);
+      setComponents('');
+      setImports('');
+      setIcons('');
+      setHooks('');
       setGet(false);
     } else {
       setGet(false);
