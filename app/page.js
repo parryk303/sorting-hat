@@ -1,9 +1,10 @@
 'use client'
 
-import { Button, Container, TextField, Grid, Typography, Box, Modal, IconButton } from '@mui/material';
+import { Button, Container, TextField, Grid, Typography, Box, Modal, IconButton, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +48,7 @@ export default function Home() {
     const hogwarts = {
       'Gryffindor': 'Imports',
       'Slytherin': 'Icons',
-      'Hufflepuff': 'components',
+      'Hufflepuff': 'Components',
       'Ravenclaw': 'Hooks'
     }
     setHouse(hogwarts[id]);
@@ -91,7 +92,7 @@ export default function Home() {
   );
 
   const greatHall = 'url(https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1398089831i/9366155._SX540_.jpg)'
-
+ 
   return (
     <Box sx={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <Typography variant='h2' align='center' sx={{ fontFamily: 'AlmendraSC' }}>
@@ -111,7 +112,7 @@ export default function Home() {
           }} item xs={12} md={6}>
             <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '90px' }}>Imports</Typography>
             <TextField
-              disableZoom 
+              disablezoom='true'
               autoComplete='off'
               sx={{ width: 'auto' }}
               style={{ width: '300px' }}
@@ -143,7 +144,7 @@ export default function Home() {
           }} item xs={12} md={6}>
             <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '110px' }}>Icons</Typography>
             <TextField
-              disableZoom 
+              disablezoom='true'
               autoComplete='off'
               sx={{ width: 'auto' }}
               style={{ width: '300px' }}
@@ -176,7 +177,7 @@ export default function Home() {
           }} item xs={12} md={6}>
             <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '55px' }}>Components</Typography>
             <TextField
-              disableZoom 
+              disablezoom='true'
               autoComplete='off'
               sx={{ width: 'auto' }}
               style={{ width: '300px' }}
@@ -209,7 +210,7 @@ export default function Home() {
           }} item xs={12} md={6}>
             <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '110px' }}>Hooks</Typography>
             <TextField
-              disableZoom 
+              disablezoom='true'
               autoComplete='off'
               sx={{ width: 'auto' }}
               style={{ width: '300px' }}
@@ -238,11 +239,26 @@ export default function Home() {
           </Grid>
         </Grid>
       </Container>
+
       {isModalOpen &&
         <Modal open={isModalOpen} onClose={closeModal}>
           {modalContent}
         </Modal>
       }
+
+      <Link href='/spells' passHref>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+          }
+          }
+        >
+          <Image width={70} height={70} alt='spell book' src='/images/spellbook.png' />
+        </Box>
+      </Link>
+
     </Box>
   );
 }
