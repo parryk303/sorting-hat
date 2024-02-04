@@ -6,8 +6,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState, useEffect } from 'react';
 import { useRouter, redirect } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
-import { deleteAllCookies } from '../lib/cookies'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,6 +54,11 @@ export default function Home() {
     }
   }, [get, isModalOpen, house, sorted, user])
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+  }
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -70,11 +73,6 @@ export default function Home() {
     }
     setHouse(hogwarts[id]);
     setGet(true)
-  }
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
   }
 
   const modalContent = (
@@ -106,7 +104,6 @@ export default function Home() {
           Your {house} have been sorted!
         </Typography >
       </Box>
-
       {house && sorted &&
         <Typography sx={{ whiteSpace: 'pre-line', fontFamily: 'monospace', color: 'green' }}>{sorted}</Typography>
       }
@@ -116,149 +113,169 @@ export default function Home() {
   const greatHall = 'url(https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/hostedimages/1398089831i/9366155._SX540_.jpg)'
 
   return (
-    <Box sx={{ display: 'grid', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Typography variant='h2' align='center' sx={{ fontFamily: 'AlmendraSC' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '94vh',
+      }}
+    >
+      <Typography variant='h2' align='center' sx={{ fontFamily: 'AlmendraSC', fontSize: { xs: '2rem', md: '3rem' } }}>
         Sorting Hat
       </Typography>
-      <Container sx={{
-        backgroundImage: greatHall,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-      }}>
-        <Grid container spacing={3}>
-          <Grid sx={{
-            display: 'grid',
-            position: 'relative',
-            left: '-350px',
-          }} item xs={12} md={6}>
-            <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '90px' }}>Imports</Typography>
-            <TextField
-              disablezoom='true'
-              autoComplete='off'
-              sx={{ width: 'auto' }}
-              style={{ width: '300px' }}
-              margin='normal'
-              multiline={true}
-              minRows={10}
-              maxRows={10}
-              size='medium'
-              value={imports}
-              onChange={(e) => setImports(e.target.value)}
-            />
-            <Button id='Gryffindor' sx={{
-              position: 'relative',
-              top: '7px',
-              width: '70px',
-              left: '120px'
-            }}
-              variant='contained'
-              color='primary'
-              onClick={handleSort}
-            >
-              Sort
-            </Button>
-          </Grid>
-          <Grid sx={{
-            display: 'grid',
-            position: 'relative',
-            right: '-600px',
-          }} item xs={12} md={6}>
-            <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '110px' }}>Icons</Typography>
-            <TextField
-              disablezoom='true'
-              autoComplete='off'
-              sx={{ width: 'auto' }}
-              style={{ width: '300px' }}
-              margin='normal'
-              multiline={true}
-              minRows={10}
-              maxRows={10}
-              size='medium'
-              value={icons}
-              onChange={(e) => setIcons(e.target.value)}
-            />
-            <Button id='Slytherin'
-              sx={{
-                position: 'relative',
-                top: '7px',
-                width: '70px',
-                left: '120px'
-              }}
-              variant='contained'
-              color='primary'
-              onClick={handleSort}
-            >
-              Sort
-            </Button>
-          </Grid>
-          <Grid sx={{
-            display: 'grid',
-            position: 'relative',
-            left: '-350px',
-          }} item xs={12} md={6}>
-            <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '55px' }}>Components</Typography>
-            <TextField
-              disablezoom='true'
-              autoComplete='off'
-              sx={{ width: 'auto' }}
-              style={{ width: '300px' }}
-              margin='normal'
-              multiline={true}
-              minRows={10}
-              maxRows={10}
-              size='medium'
-              value={components}
-              onChange={(e) => setComponents(e.target.value)}
-            />
-            <Button id='Hufflepuff'
-              sx={{
-                position: 'relative',
-                top: '7px',
-                width: '70px',
-                left: '120px'
-              }}
-              variant='contained'
-              color='primary'
-              onClick={handleSort}
-            >
-              Sort
-            </Button>
-          </Grid>
-          <Grid sx={{
-            display: 'grid',
-            position: 'relative',
-            right: '-600px',
-          }} item xs={12} md={6}>
-            <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp', marginLeft: '110px' }}>Hooks</Typography>
-            <TextField
-              disablezoom='true'
-              autoComplete='off'
-              sx={{ width: 'auto' }}
-              style={{ width: '300px' }}
-              margin='normal'
-              multiline={true}
-              minRows={10}
-              maxRows={10}
-              size='medium'
-              value={hooks}
-              onChange={(e) => setHooks(e.target.value)}
-            />
-            <Button id='Ravenclaw'
-              sx={{
-                position: 'relative',
-                top: '7px',
-                width: '70px',
-                left: '120px',
 
-              }}
-              variant='contained'
-              color='primary'
-              onClick={handleSort}
-            >
-              Sort
-            </Button>
-          </Grid>
+      <Container
+        sx={{
+          marginTop: '5vh',
+          backgroundImage: greatHall,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          width: '86vw',
+          height: '90vw',
+          position: 'relative',
+        }}
+      >
+        <Grid
+          sx={{
+            position: 'absolute',
+            top: '2vw',
+            left: '-15vw',
+            width: '15vw',
+            display: 'grid',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+          item xs={12} md={6}
+        >
+          <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp' }}>Imports</Typography>
+          <TextField
+            disablezoom='true'
+            autoComplete='off'
+            sx={{ width: 'auto' }}
+            style={{ width: '14vw' }}
+            margin='normal'
+            multiline={true}
+            minRows={10}
+            maxRows={10}
+            size='medium'
+            value={imports}
+            onChange={(e) => setImports(e.target.value)}
+          />
+          <Button id='Gryffindor' sx={{ alignSelf: 'center', width: '4.5vw', marginLeft: '5vw' }}
+            variant='contained'
+            color='primary'
+            onClick={handleSort}
+          >
+            Sort
+          </Button>
+        </Grid>
+
+        <Grid
+          sx={{
+            position: 'absolute',
+            top: '2vw',
+            right: '-15vw',
+            width: '15vw',
+            display: 'grid',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+          item xs={12} md={6}
+        >
+          <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp' }}>Icons</Typography>
+          <TextField
+            disablezoom='true'
+            autoComplete='off'
+            sx={{ width: 'auto' }}
+            style={{ width: '14vw' }}
+            margin='normal'
+            multiline={true}
+            minRows={10}
+            maxRows={10}
+            size='medium'
+            value={icons}
+            onChange={(e) => setIcons(e.target.value)}
+          />
+          <Button id='Slytherin' sx={{ alignSelf: 'center', width: '4.5vw', marginLeft: '5vw' }}
+            variant='contained'
+            color='primary'
+            onClick={handleSort}
+          >
+            Sort
+          </Button>
+        </Grid>
+
+        <Grid
+          sx={{
+            position: 'absolute',
+            bottom: '0vw',
+            left: '-15vw',
+            width: '15vw',
+            display: 'grid',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+          item xs={12} md={6}
+        >
+          <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp' }}>Components</Typography>
+          <TextField
+            disablezoom='true'
+            autoComplete='off'
+            sx={{ width: 'auto' }}
+            style={{ width: '14vw' }}
+            margin='normal'
+            multiline={true}
+            minRows={10}
+            maxRows={10}
+            size='medium'
+            value={components}
+            onChange={(e) => setComponents(e.target.value)}
+          />
+          <Button id='Hufflepuff' sx={{ alignSelf: 'center', width: '4.5vw', marginLeft: '5vw' }}
+            variant='contained'
+            color='primary'
+            onClick={handleSort}
+          >
+            Sort
+          </Button>
+        </Grid>
+
+        <Grid
+          sx={{
+            position: 'absolute',
+            bottom: '0vw',
+            right: '-15vw',
+            width: '15vw',
+            display: 'grid',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+          item xs={12} md={6}
+        >
+          <Typography variant='h4' sx={{ fontFamily: 'MedievalSharp' }}>Hooks</Typography>
+          <TextField
+            disablezoom='true'
+            autoComplete='off'
+            sx={{ width: 'auto' }}
+            style={{ width: '14vw' }}
+            margin='normal'
+            multiline={true}
+            minRows={10}
+            maxRows={10}
+            size='medium'
+            value={hooks}
+            onChange={(e) => setHooks(e.target.value)}
+          />
+          <Button id='Ravenclaw' sx={{ alignSelf: 'center', width: '5vw', marginLeft: '5vw' }}
+            variant='contained'
+            color='primary'
+            onClick={handleSort}
+          >
+            Sort
+          </Button>
         </Grid>
       </Container>
 
@@ -268,18 +285,17 @@ export default function Home() {
         </Modal>
       }
 
-
       <Button href='/spells'
         sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           position: 'absolute',
-          top: '20px',
-          right: '20px',
+          top: '0.25vh',
+          right: '0.25vh',
           borderRadius: '50%',
-          width: 104,
-          height: 104,
+          width: { xs: '104px', md: '150px' },
+          height: { xs: '104px', md: '150px' },
         }}
       >
         <Image width={70} height={70} alt='spell book' src='/images/spellbook.png' />
@@ -291,11 +307,11 @@ export default function Home() {
           justifyContent: 'center',
           alignItems: 'center',
           position: 'absolute',
-          top: '20px',
-          left: '50px',
+          top: '0.25vh',
+          left: '0.25vh',
           borderRadius: '50%',
-          width: 104,
-          height: 104,
+          width: { xs: '104px', md: '150px' },
+          height: { xs: '104px', md: '150px' },
         }}
       >
         <Image width={70} height={70} alt='keys' src='/images/lock.png' />

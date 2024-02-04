@@ -9,11 +9,13 @@ export async function middleware(req) {
     const pathname = req.nextUrl.pathname;
 
     if (
-        pathname.startsWith("/_next") || // exclude Next.js internals
-        pathname.startsWith("/api") || //  exclude all API routes
-        pathname.startsWith("/static") || // exclude static files
-        pathname.startsWith("/login") ||
-        pathname.startsWith("/auth") ||
+        pathname.startsWith('/_next') || // exclude Next.js internals
+        pathname.startsWith('/api') || //  exclude all API routes
+        pathname.startsWith('/static') || // exclude static files
+        pathname.startsWith('/login') ||
+        pathname.startsWith('/auth') ||
+        // pathname.startsWith('/home') ||
+        // pathname.startsWith('/spells') ||
         PUBLIC_FILE.test(pathname)
     ) {
         return res;
