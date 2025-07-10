@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.17",
     "@react-spring/web": "^9.7.3",
+    "axios": "^1.7.2",
     "goofy-names": "^1.0.0",
     "next": "14.0.1",
     "react": "18.2.0",
