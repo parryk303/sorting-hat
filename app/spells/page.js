@@ -389,13 +389,13 @@ export default function Spells() {
       <Link href="/" passHref>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-            borderRadius: "50%",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'absolute',
+            top: '1vw',
+            right: '1vw',
+            borderRadius: '50%',
             width: 104,
             height: 104,
             backgroundColor: "white",
