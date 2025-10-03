@@ -381,6 +381,23 @@ export default function Home() {
           />
         </Box>
       </Link>
+
+      <Link href="/sorting" passHref>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20px",
+            left: "20px",
+          }}
+        >
+          <Image
+            width={70}
+            height={70}
+            alt="spell book"
+            src="/images/cat.jpg"
+          />
+        </Box>
+      </Link>
     </Box>
   );
 }
