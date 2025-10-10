@@ -66,6 +66,31 @@
   animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
 }
 
+#envs {
+  background-color: #222f5b; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+
+#envs:hover {
+  background-color: #bebebe;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
+#css {
+  background-color: #222f5b; /* Initial background color */
+  color: white; /* Initial text color */
+  transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for color changes */
+}
+#css:hover {
+  background-color: #bebebe;
+
+  /* Apply multiple animations */
+  animation: magical-hover 0.5s ease-in-out both, shake 1.2s ease-in-out both, sparkle 1s linear infinite;
+}
+
 @keyframes magical-hover {
   from {
     transform: scale(1);
