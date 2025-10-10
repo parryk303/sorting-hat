@@ -168,7 +168,7 @@ export default function Home() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           width: "100vw",
-          height: "100vh",
+          height: "90vh",
         }}
       >
         <Grid container spacing={3}>
