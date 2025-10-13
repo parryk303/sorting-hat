@@ -321,7 +321,7 @@ export default function Spells() {
               onChange={(e) => setENVs(e.target.value)}
             />
             <Button
-              id="Ravenclaw"
+              id="envs"
               sx={{
                 position: "relative",
                 top: "7px",
@@ -363,7 +363,7 @@ export default function Spells() {
               onChange={(e) => setCSS(e.target.value)}
             />
             <Button
-              id="Ravenclaw"
+              id="css"
               sx={{
                 position: "relative",
                 top: "7px",

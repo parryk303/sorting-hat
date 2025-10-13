@@ -77,7 +77,7 @@ export default function JsonValidator() {
           <Box
             sx={{
               position: "relative",
-              top: "80px",
+              top: "10px",
               display: "flex",
               justifyContent: "right",
               gap: 2,
@@ -162,7 +162,7 @@ export default function JsonValidator() {
           <Box
             sx={{
               position: "relative",
-              top: "80px",
+              top: "10px",
               display: "flex",
               justifyContent: "right",
               gap: 2,
